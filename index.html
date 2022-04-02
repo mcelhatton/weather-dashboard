@@ -36,7 +36,7 @@
     <!-- Selected city weather data top div -->
     <div class="col 12">
       <div class="col 12 col-md-8">
-        <h4 class="subtitle">Currently Showing Weather for: <span id="citySearch"></span></h4>
+        <h4 class="subtitle"><span id="date"></span> - Showing Weather for:  <span id="citySearch"></span></h4>
         <div id="weather-container" class="list-group">
           <p class="currentWeatherList">Current temp: <span id="temp"></span></p>
           <p class="currentWeatherList">Current wind speed: <span id="wind"></span></p>
@@ -46,10 +46,50 @@
       </div>
   
       <!-- 5 day forecast div -->
-      <div class="col 12 col-md-8">
+      <div class="row-cols-1">
         <h2 class="subtitle">5-Day Forecast</h2>
-        <div id="5day-container" class="list-group"></div>
-      </div>
+        <div class="card-group">
+          <div id="card1" class="card">
+            <img src="./assets/" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 id="header1" class="card-title"></h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div id="card2" class="card">
+            <img src="./assets/" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 id="header2" class="card-title">Card title</h5>
+              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div id="card3" class="card">
+            <img src="./assets/" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 id="header3" class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div id="card4" class="card">
+            <img src="./assets/" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 id="header4" class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div id="card5" class="card">
+            <img src="./assets/" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 id="header5" class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
     </div>
     
 
@@ -59,6 +99,7 @@
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 
   </body>

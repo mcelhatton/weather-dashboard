@@ -1,5 +1,8 @@
 const apiKey = 'c3cbe84d45eaa63cacdc46b1a5933fb1'
 
+var timeNow = moment().format('MMMM Do YYYY');
+$('#date').replaceWith(timeNow);
+
 var city = '';
 var citySearchEl = $('#citySearch');
 var tempEl = $('#temp');
@@ -64,7 +67,16 @@ function loadWeatherData(data) {
   wind.textContent = data.current.wind_speed;
   humidity.textContent = data.current.humidity;
   uv.textContent = data.current.uvi;
-  
+
+ // $(`div.#${i}.h5`).replaceWith(timeNow);
+
+  // load data into cards 5 day forecast
+  for (var i = 1; i < 6; i++) {
+    var forecastDate = moment().add(i, 'day').format('MMMM Do');
+    $(`#header${i}`).replaceWith(forecastDate);
+    console.log(forecastDate);
+  }
+ 
 
 }
 
