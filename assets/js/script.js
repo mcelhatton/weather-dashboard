@@ -41,7 +41,7 @@ var formSubmitHandler = function(event) {
 // takes users city input and calls to get the cities lat and long then calls getWeatherData function
 var getCityLatLong = function(city) {
   
-  var getGeoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${city},USA&limit=1&appid=${apiKey}`;
+  var getGeoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city},USA&limit=1&appid=${apiKey}`;
   console.log(getGeoURL);
 
   fetch(getGeoURL).then(function(response) {
