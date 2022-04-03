@@ -1,26 +1,33 @@
 const apiKey = 'c3cbe84d45eaa63cacdc46b1a5933fb1';
 
-var timeNow = moment().format('MMMM Do');
+var timeNow = moment().format('MMMM Do YYYY');
 $('#date').replaceWith(timeNow);
 
 var city = '';
-var citySearchEl = $('#citySearch');
 var tempEl = $('#temp');
 var windEl = $('#wind');
 var humidityEl = $('#humidity');
 var uvEl = $('#uv');
+$('#citySearch').replaceWith('');
 
 var cityFormEl = document.querySelector('#cityForm');
 var cityInputEl = document.querySelector('#city');
 
+$('#curentWeatherDiv').hide();
+$('#5dayForecastDiv').hide();
+
 var formSubmitHandler = function(event) {
   event.preventDefault();
   city = cityInputEl.value.trim();
+  $('#curentWeatherDiv').show();
+  $('#5dayForecastDiv').show();
+  
 
   if (city) {
     getCityLatLong(city);
+    $('#citySearch').replaceWith(city);
     localStorage.setItem('city', city);
-    $(`#searchDiv`).append(`<div><button class="btn searchInput">${city}</button></div>`);
+    $(`#searchDiv`).append(`<div><button id="${city}" onclick="getID(this)" class="btn searchInput">${city}</button></div>`);
     cityInputEl.value = '';
   } else {
     alert('Please enter a city');
@@ -63,19 +70,32 @@ function loadWeatherData(data) {
 
   var weatherIconID = data.current.weather[0].icon;
   var currentWeatherIconUrl = `http://openweathermap.org/img/wn/${weatherIconID}@2x.png`;
+  var uvIndex = data.current.uvi;
 
-  citySearchEl.textContent = '';
+  
   temp.textContent = '';
   windEl.textContent = '';
   humidityEl.textContent = '';
   uvEl.textContent = '';
 
-  citySearch.textContent = city;
+  //$('#citySearch').replaceWith(city);
+  //citySearch.textContent = city;
   $('#currentIcon').attr('src', currentWeatherIconUrl);
   temp.textContent = data.current.temp
   wind.textContent = data.current.wind_speed;
   humidity.textContent = data.current.humidity;
   uv.textContent = data.current.uvi;
+  console.log(uv);
+
+  if (uvIndex < 3) {
+    $('#uv').css({'background-color': '#6DD400', 'color': 'black'});
+  } else if (uvIndex < 6) {
+    $('#uv').css({'background-color': '#F3FF00', 'color': 'black'});
+  } else if (uvIndex < 8) {
+    $('#uv').css({'background-color': '#F7B500', 'color': 'black'});
+  } else {
+    $('#uv').css({'background-color': '#E02020', 'color': 'black'});
+  }
   
   console.log(weatherIconID);
   console.log(weatherIconUrl);
@@ -108,3 +128,11 @@ function loadWeatherData(data) {
 }
 
 cityFormEl.addEventListener('submit', formSubmitHandler);
+
+
+function getID(btn) {
+  var pastCity = btn.id;
+  $('#citySearch').replaceWith(pastCity);
+  getCityLatLong(pastCity);
+  console.log(pastCity);
+}
