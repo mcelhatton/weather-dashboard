@@ -8,10 +8,11 @@ var tempEl = $('#temp');
 var windEl = $('#wind');
 var humidityEl = $('#humidity');
 var uvEl = $('#uv');
-$('#citySearch').replaceWith('');
+var searchCity = $('#citySearch').val();
 
 var cityFormEl = document.querySelector('#cityForm');
 var cityInputEl = document.querySelector('#city');
+var citySearchDisplayEl = document.querySelector('#citySearch');
 
 $('#curentWeatherDiv').hide();
 $('#5dayForecastDiv').hide();
@@ -25,7 +26,7 @@ var formSubmitHandler = function(event) {
 
   if (city) {
     getCityLatLong(city);
-    $('#citySearch').replaceWith(city);
+    //$('#citySearch').replaceWith(city);
     localStorage.setItem('city', city);
     $(`#searchDiv`).append(`<div><button id="${city}" onclick="getID(this)" class="btn searchInput">${city}</button></div>`);
     cityInputEl.value = '';
@@ -78,14 +79,13 @@ function loadWeatherData(data) {
   humidityEl.textContent = '';
   uvEl.textContent = '';
 
-  //$('#citySearch').replaceWith(city);
-  //citySearch.textContent = city;
+  //$('#citySearch').attr('textContent', city);
+  citySearchDisplayEl.textContent = city;
   $('#currentIcon').attr('src', currentWeatherIconUrl);
   temp.textContent = data.current.temp
   wind.textContent = data.current.wind_speed;
   humidity.textContent = data.current.humidity;
   uv.textContent = data.current.uvi;
-  console.log(uv);
 
   if (uvIndex < 3) {
     $('#uv').css({'background-color': '#6DD400', 'color': 'black'});
@@ -96,13 +96,11 @@ function loadWeatherData(data) {
   } else {
     $('#uv').css({'background-color': '#E02020', 'color': 'black'});
   }
-  
-  console.log(weatherIconID);
-  console.log(weatherIconUrl);
 
   // clears out weather data
   for (var i = 1; i < 6; i++) {
     $(`#list${i}`).children('li').remove();
+
   }
 
   // load data into cards 5 day forecast
