@@ -68,13 +68,17 @@ function loadWeatherData(data) {
   humidity.textContent = data.current.humidity;
   uv.textContent = data.current.uvi;
 
- // $(`div.#${i}.h5`).replaceWith(timeNow);
-
   // load data into cards 5 day forecast
   for (var i = 1; i < 6; i++) {
+
+    var listTemp = data.daily[i].day;
+     
+
     var forecastDate = moment().add(i, 'day').format('MMMM Do');
     $(`#header${i}`).replaceWith(forecastDate);
-    console.log(forecastDate);
+    $(`#list${i}`).append(`<li>${listTemp}</li>`);
+    
+    
   }
  
 
