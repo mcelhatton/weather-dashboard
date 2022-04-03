@@ -1,5 +1,39 @@
-.subtitle {
-  
+.hero {
+  background-color: blue;
+  color: white;
+}
+
+.btn {
+  background-color: deepskyblue;
+  color: white;
+  margin: 10px;
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+}
+
+.currentWeatherList span {
+  font-weight: bold;
+  font-size: large;
+}
+
+.card {
+  background-color: darkblue;
+  color: white;
+  margin: 10px;
+}
+
+.card-title {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.searchInput {
+  background-color: gray;
+  color: white;
+  width: 100%;
 }
 
 /* HEIGHT / WIDTH UTILS */

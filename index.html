@@ -22,8 +22,8 @@
 
     <!-- left side city search and suggestion -->
   <main class="flex-row justify-space-between">
-    <div class="col-12 col-md-4">
-      <div class="card">
+    <div class="col-12 col-md-4 ">
+      <div id="searchDiv" class="card">
         <h3 class="card-header text-uppercase">Search for a City:</h3>
         <form id="cityForm" class="card-body">
           <input name="city" id="city" type="text" autofocus="true" class="form-input" placeholder="Enter City"/>
@@ -36,7 +36,7 @@
     <!-- Selected city weather data top div -->
     <div class="col 12">
       <div class="col 12 col-md-8">
-        <h4 class="subtitle"><span id="date"></span> - Showing Weather for:  <span id="citySearch"></span></h4>
+        <h2 class="subtitle"><span id="date"></span> - Showing Weather for:  <span id="citySearch"></span></h2>
         <div id="weather-container" class="list-group">
           <p class="currentWeatherList">Current temp: <span id="temp"></span></p>
           <p class="currentWeatherList">Current wind speed: <span id="wind"></span></p>
