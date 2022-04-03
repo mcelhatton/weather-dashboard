@@ -68,16 +68,24 @@ function loadWeatherData(data) {
   humidity.textContent = data.current.humidity;
   uv.textContent = data.current.uvi;
 
+  for (var i = 1; i < 6; i++) {
+    $(`#list${i}`).children('li').remove();
+  }
+
   // load data into cards 5 day forecast
   for (var i = 1; i < 6; i++) {
 
-    var listTemp = data.daily[i].day;
-     
-
+    var temp5day = data.daily[i].temp.day;
+    var wind5day = data.daily[i].wind_speed;
+    var humidity5day = data.daily[i].humidity;
+    var uv5day = data.daily[i].uvi;
     var forecastDate = moment().add(i, 'day').format('MMMM Do');
+
     $(`#header${i}`).replaceWith(forecastDate);
-    $(`#list${i}`).append(`<li>${listTemp}</li>`);
-    
+    $(`#list${i}`).append(`<li>High Temp: ${temp5day}</li>`);
+    $(`#list${i}`).append(`<li>Wind Speed: ${wind5day}</li>`);
+    $(`#list${i}`).append(`<li>Humidity: ${humidity5day}</li>`);
+    $(`#list${i}`).append(`<li>UV Index: ${uv5day}</li>`);
     
   }
  
