@@ -114,7 +114,7 @@ function loadWeatherData(data) {
     var uv5day = data.daily[i].uvi;
     var forecastDate = moment().add(i, 'day').format('MMMM Do');
     var weatherIconID5day = data.daily[i].weather[0].icon;
-    var weatherIconUrl = `http://openweathermap.org/img/wn/${weatherIconID5day}@2x.png`;
+    var weatherIconUrl = `https://openweathermap.org/img/wn/${weatherIconID5day}@2x.png`;
 
     $(`#card${i}Image`).attr('src', weatherIconUrl);
     $(`#header${i}`).replaceWith(forecastDate);
