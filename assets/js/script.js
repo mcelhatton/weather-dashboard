@@ -130,7 +130,7 @@ cityFormEl.addEventListener('submit', formSubmitHandler);
 
 function getID(btn) {
   var pastCity = btn.id;
-  $('#citySearch').replaceWith(pastCity);
-  getCityLatLong(pastCity);
-  console.log(pastCity);
+  city = pastCity;
+  citySearchDisplayEl.textContent = pastCity;
+  getCityLatLong(city);
 }
