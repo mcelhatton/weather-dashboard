@@ -1,4 +1,4 @@
-const apiKey = 'c3cbe84d45eaa63cacdc46b1a5933fb1'
+const apiKey = 'c3cbe84d45eaa63cacdc46b1a5933fb1';
 
 var timeNow = moment().format('MMMM Do');
 $('#date').replaceWith(timeNow);
@@ -20,7 +20,7 @@ var formSubmitHandler = function(event) {
   if (city) {
     getCityLatLong(city);
     localStorage.setItem('city', city);
-    $(`#searchDiv`).append(`<div><button${.addClass('searchInput')}>${city}</button$></div>`);
+    $(`#searchDiv`).append(`<div><button class="btn searchInput">${city}</button></div>`);
     cityInputEl.value = '';
   } else {
     alert('Please enter a city');
@@ -60,6 +60,10 @@ var getWeatherData = function(lat, long) {
 
 // get weather data into the UI
 function loadWeatherData(data) {
+
+  var weatherIconID = data.current.weather[0].icon;
+  var currentWeatherIconUrl = `http://openweathermap.org/img/wn/${weatherIconID}@2x.png`;
+
   citySearchEl.textContent = '';
   temp.textContent = '';
   windEl.textContent = '';
@@ -67,10 +71,14 @@ function loadWeatherData(data) {
   uvEl.textContent = '';
 
   citySearch.textContent = city;
+  $('#currentIcon').attr('src', currentWeatherIconUrl);
   temp.textContent = data.current.temp
   wind.textContent = data.current.wind_speed;
   humidity.textContent = data.current.humidity;
   uv.textContent = data.current.uvi;
+  
+  console.log(weatherIconID);
+  console.log(weatherIconUrl);
 
   // clears out weather data
   for (var i = 1; i < 6; i++) {
@@ -85,7 +93,10 @@ function loadWeatherData(data) {
     var humidity5day = data.daily[i].humidity;
     var uv5day = data.daily[i].uvi;
     var forecastDate = moment().add(i, 'day').format('MMMM Do');
+    var weatherIconID5day = data.daily[i].weather[0].icon;
+    var weatherIconUrl = `http://openweathermap.org/img/wn/${weatherIconID5day}@2x.png`;
 
+    $(`#card${i}Image`).attr('src', weatherIconUrl);
     $(`#header${i}`).replaceWith(forecastDate);
     $(`#list${i}`).append(`<li>High Temp: ${temp5day}</li>`);
     $(`#list${i}`).append(`<li>Wind Speed: ${wind5day}</li>`);
