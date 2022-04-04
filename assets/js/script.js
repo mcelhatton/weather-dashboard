@@ -29,7 +29,6 @@ var formSubmitHandler = function(event) {
   
   if (city) {
     getCityLatLong(city);
-    //$('#citySearch').replaceWith(city);
     localStorage.setItem('city', city);
     $(`#searchDiv`).append(`<div><button id="${city}" onclick="getID(this)" class="btn searchInput">${city}</button></div>`);
     cityInputEl.value = '';
@@ -42,14 +41,11 @@ var formSubmitHandler = function(event) {
 var getCityLatLong = function(city) {
   
   var getGeoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${city},USA&limit=1&appid=${apiKey}`;
-  console.log(getGeoURL);
 
   fetch(getGeoURL).then(function(response) {
     response.json().then(function(data) {
       var lat = data[0].lat;
       var long = data[0].lon;
-      console.log(data);
-      console.log(lat, long);
       getWeatherData(lat, long);
     });
   });
@@ -62,11 +58,11 @@ var getWeatherData = function(lat, long) {
 
   fetch(getWeatherURL).then(function(response) {
     response.json().then(function(data) {
-      console.log(data);
+      
       loadWeatherData(data);
     });
   });
-  console.log(getWeatherURL);
+  
 }
 
 // get weather data into the UI
@@ -81,7 +77,6 @@ function loadWeatherData(data) {
   humidityEl.textContent = '';
   uvEl.textContent = '';
 
-  //$('#citySearch').attr('textContent', city);
   citySearchDisplayEl.textContent = city;
   $('#currentIcon').attr('src', currentWeatherIconUrl);
   temp.textContent = data.current.temp
